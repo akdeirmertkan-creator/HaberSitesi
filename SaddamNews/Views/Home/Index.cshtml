@@ -1,0 +1,84 @@
+@model SaddamNews.Models.ViewModels.HomeIndexViewModel
+
+@{
+    ViewData["Title"] = "Ana Sayfa";
+}
+
+<div class="text-center mb-5" data-aos="zoom-in">
+    <h1 class="display-4 fw-bold theme-heading">Son Dakika Haberleri</h1>
+    <p class="lead text-muted-custom">Gündeme dair en sıcak gelişmeler ve analizler...</p>
+    <hr class="w-50 mx-auto" style="border-top: 3px solid var(--secondary-color);" />
+</div>
+
+<div class="row">
+    @if(Model.NewsList != null && Model.NewsList.Any())
+    {
+        int delay = 0;
+        foreach(var news in Model.NewsList)
+        {
+            <div class="col-md-6 col-lg-4 mb-4" data-aos="fade-up" data-aos-delay="@delay">
+                <div class="card card-theme h-100 shadow-sm rounded-3 overflow-hidden">
+                    @if (!string.IsNullOrEmpty(news.ImageUrl))
+                    {
+                        <img src="@news.ImageUrl" class="card-img-top" alt="@news.Title" style="height: 200px; object-fit: cover;" onerror="this.src='/images/logo.jpg'">
+                    }
+                    else
+                    {
+                        <div class="card-img-top bg-secondary d-flex justify-content-center align-items-center" style="height: 200px;">
+                            <i class="fas fa-newspaper fa-4x text-light opacity-75"></i>
+                        </div>
+                    }
+                    <div class="card-body">
+                        <div class="d-flex justify-content-between align-items-center mb-2">
+                            <span class="badge rounded-pill" style="background-color: var(--primary-color); color: #fff;">
+                                <i class="fas fa-user-edit me-1"></i>@news.Author
+                            </span>
+                            <small class="text-muted-custom">
+                                <i class="far fa-clock me-1"></i>@news.CreatedAt.ToLocalTime().ToString("dd MMM yyyy HH:mm")
+                            </small>
+                        </div>
+                        <h5 class="card-title fw-bold theme-heading mt-2">@news.Title</h5>
+                        <p class="card-text text-muted-custom mt-2">
+                            @(news.Content.Length > 120 ? news.Content.Substring(0, 120) + "..." : news.Content)
+                        </p>
+                    </div>
+                    <div class="card-footer card-footer-theme border-0 text-center pb-3">
+                        <a asp-action="Details" asp-route-id="@news.Id" class="btn btn-theme-outline w-100 py-2">
+                            Devamını Oku <i class="fas fa-arrow-right ms-1"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            delay += 100;
+        }
+
+        @if(Model.TotalPages > 1)
+        {
+            <div class="col-12 mt-4" data-aos="fade-up">
+                <nav aria-label="Haber sayfaları">
+                    <ul class="pagination pagination-theme justify-content-center">
+                        <li class="page-item @(!Model.HasPreviousPage ? "disabled" : "")">
+                            <a class="page-link" asp-action="Index" asp-route-page="@(Model.CurrentPage - 1)">Önceki</a>
+                        </li>
+                        @for(int i = 1; i <= Model.TotalPages; i++)
+                        {
+                            <li class="page-item @(i == Model.CurrentPage ? "active" : "")">
+                                <a class="page-link" asp-action="Index" asp-route-page="@i">@i</a>
+                            </li>
+                        }
+                        <li class="page-item @(!Model.HasNextPage ? "disabled" : "")">
+                            <a class="page-link" asp-action="Index" asp-route-page="@(Model.CurrentPage + 1)">Sonraki</a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        }
+    }
+    else
+    {
+        <div class="col-12 text-center text-muted-custom my-5" data-aos="fade-in">
+            <i class="fas fa-newspaper fa-3x mb-3 opacity-50"></i>
+            <h5 class="fw-light">Şu anda gösterilecek bir haber bulunmuyor.</h5>
+        </div>
+    }
+</div>

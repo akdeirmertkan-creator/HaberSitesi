@@ -1,0 +1,192 @@
+:root {
+    --primary-color: #4b5320;
+    --primary-hover: #3d431a;
+    --secondary-color: #8c7d62;
+    --heading-color: #383e18;
+    --text-color: #212529;
+    --text-muted-custom: #6c757d;
+    --bg-color: #f7f7f4;
+    --card-bg: #ffffff;
+    --card-footer-bg: #fdfdfd;
+    --border-color: #e5e5dd;
+    --input-bg: #ffffff;
+    --input-border: #ced4da;
+    --footer-bg: #1f2214;
+    --footer-text: #dcded2;
+}
+
+[data-bs-theme="dark"] {
+    --primary-color: #8c9a44;
+    --primary-hover: #a1b052;
+    --secondary-color: #b0a48b;
+    --heading-color: #dbe4a8;
+    --text-color: #e6e6e6;
+    --text-muted-custom: #a0a0a0;
+    --bg-color: #12130e;
+    --card-bg: #1a1c14;
+    --card-footer-bg: #171812;
+    --border-color: #2e3321;
+    --input-bg: #22251a;
+    --input-border: #3b422a;
+    --footer-bg: #0c0d09;
+    --footer-text: #a8aba0;
+}
+
+html, body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    min-height: 100%;
+}
+
+body {
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+/* Typography */
+.theme-heading {
+    color: var(--heading-color) !important;
+}
+
+.text-muted-custom {
+    color: var(--text-muted-custom) !important;
+}
+
+/* Header & Navbar */
+.navbar-custom {
+    background-color: var(--primary-color) !important;
+    transition: background-color 0.3s ease;
+}
+
+.navbar-custom .navbar-brand,
+.navbar-custom .nav-link {
+    color: #ffffff !important;
+    font-weight: 600;
+}
+
+.navbar-custom .nav-link:hover {
+    color: var(--secondary-color) !important;
+}
+
+.brand-logo {
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    margin-right: 12px;
+    object-fit: cover;
+    border: 2px solid var(--secondary-color);
+}
+
+/* Cards & Content */
+.card-theme {
+    background-color: var(--card-bg) !important;
+    border: 1px solid var(--border-color) !important;
+    color: var(--text-color) !important;
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.card-theme:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2) !important;
+}
+
+.card-footer-theme {
+    background-color: var(--card-footer-bg) !important;
+    border-top: 1px solid var(--border-color) !important;
+}
+
+.bg-theme-card {
+    background-color: var(--card-bg) !important;
+    color: var(--text-color) !important;
+}
+
+/* Form Controls */
+.input-theme {
+    background-color: var(--input-bg) !important;
+    border-color: var(--input-border) !important;
+    color: var(--text-color) !important;
+}
+
+.input-theme:focus {
+    border-color: var(--primary-color) !important;
+    box-shadow: 0 0 0 0.25rem rgba(140, 154, 68, 0.25) !important;
+}
+
+/* Buttons */
+.btn-theme-primary {
+    background-color: var(--primary-color) !important;
+    border-color: var(--primary-color) !important;
+    color: #ffffff !important;
+    font-weight: 600;
+}
+
+.btn-theme-primary:hover {
+    background-color: var(--primary-hover) !important;
+    border-color: var(--primary-hover) !important;
+    color: #ffffff !important;
+}
+
+.btn-theme-outline {
+    border: 1px solid var(--primary-color) !important;
+    color: var(--heading-color) !important;
+    background: transparent;
+    font-weight: 500;
+}
+
+.btn-theme-outline:hover {
+    background-color: var(--primary-color) !important;
+    color: #ffffff !important;
+}
+
+/* Table */
+.table-theme {
+    color: var(--text-color) !important;
+}
+
+.table-theme thead th {
+    background-color: var(--primary-color) !important;
+    color: #ffffff !important;
+    border: none;
+}
+
+.table-theme tbody tr {
+    background-color: var(--card-bg) !important;
+    border-color: var(--border-color) !important;
+}
+
+/* Footer */
+.footer-custom {
+    background-color: var(--footer-bg) !important;
+    color: var(--footer-text) !important;
+    padding: 22px 0;
+    border-top: 3px solid var(--primary-color);
+}
+
+.secret-login-link {
+    color: var(--footer-bg);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.secret-login-link:hover {
+    color: var(--primary-color);
+}
+
+/* Pagination */
+.pagination-theme .page-link {
+    background-color: var(--card-bg);
+    color: var(--heading-color);
+    border-color: var(--border-color);
+}
+
+.pagination-theme .page-item.active .page-link {
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+    color: #ffffff;
+}
+
+.pagination-theme .page-link:hover {
+    background-color: var(--primary-hover);
+    color: #ffffff;
+}

@@ -1,0 +1,38 @@
+@model SaddamNews.Models.News
+
+@{
+    ViewData["Title"] = Model.Title;
+}
+
+<div class="row justify-content-center">
+    <div class="col-lg-9 col-md-11" data-aos="fade-up">
+        <a asp-action="Index" class="btn btn-theme-outline mb-4">
+            <i class="fas fa-arrow-left me-1"></i> Tüm Haberlere Dön
+        </a>
+
+        <article class="card card-theme shadow-sm rounded-3 overflow-hidden p-4 p-md-5">
+            <h1 class="display-6 fw-bold theme-heading mb-3">@Model.Title</h1>
+
+            <div class="d-flex flex-wrap align-items-center gap-3 text-muted-custom mb-4 pb-3 border-bottom" style="border-color: var(--border-color) !important;">
+                <span>
+                    <i class="fas fa-user-edit me-1 text-primary"></i> <strong>@Model.Author</strong>
+                </span>
+                <span>•</span>
+                <span>
+                    <i class="far fa-clock me-1"></i> @Model.CreatedAt.ToLocalTime().ToString("dd MMMM yyyy HH:mm")
+                </span>
+            </div>
+
+            @if (!string.IsNullOrEmpty(Model.ImageUrl))
+            {
+                <div class="mb-4 text-center">
+                    <img src="@Model.ImageUrl" class="img-fluid rounded-3 shadow-sm w-100" style="max-height: 450px; object-fit: cover;" alt="@Model.Title" onerror="this.src='/images/logo.jpg'" />
+                </div>
+            }
+
+            <div class="lead" style="white-space: pre-line; line-height: 1.8;">
+                @Model.Content
+            </div>
+        </article>
+    </div>
+</div>

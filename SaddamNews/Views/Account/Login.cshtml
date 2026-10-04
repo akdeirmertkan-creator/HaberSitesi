@@ -1,0 +1,52 @@
+@model SaddamNews.Models.ViewModels.LoginViewModel
+
+@{
+    ViewData["Title"] = "Yönetici ve Editör Girişi";
+}
+
+<div class="row justify-content-center mt-5" data-aos="fade-up">
+    <div class="col-md-6 col-lg-5">
+        <div class="card card-theme shadow-lg rounded-4 overflow-hidden">
+            <div class="card-header text-center text-white py-3" style="background-color: var(--primary-color);">
+                <h3 class="my-1"><i class="fas fa-user-shield me-2"></i>Panel Girişi</h3>
+                <small class="text-white-50">Admin ve Editör Erişimi</small>
+            </div>
+            <div class="card-body p-4 bg-theme-card">
+                <form asp-action="Login" method="post">
+                    @Html.AntiForgeryToken()
+                    <input type="hidden" asp-for="ReturnUrl" />
+
+                    <div asp-validation-summary="ModelOnly" class="alert alert-danger mb-3" role="alert"></div>
+
+                    <div class="mb-3">
+                        <label asp-for="Username" class="form-label fw-semibold"></label>
+                        <div class="input-group">
+                            <span class="input-group-text input-theme"><i class="fas fa-user"></i></span>
+                            <input asp-for="Username" class="form-control input-theme" placeholder="Kullanıcı adınızı girin" autocomplete="username" />
+                        </div>
+                        <span asp-validation-for="Username" class="text-danger small"></span>
+                    </div>
+
+                    <div class="mb-4">
+                        <label asp-for="Password" class="form-label fw-semibold"></label>
+                        <div class="input-group">
+                            <span class="input-group-text input-theme"><i class="fas fa-lock"></i></span>
+                            <input asp-for="Password" class="form-control input-theme" placeholder="Şifrenizi girin" autocomplete="current-password" />
+                        </div>
+                        <span asp-validation-for="Password" class="text-danger small"></span>
+                    </div>
+
+                    <div class="d-grid gap-2">
+                        <button type="submit" class="btn btn-lg btn-theme-primary">
+                            Giriş Yap <i class="fas fa-sign-in-alt ms-1"></i>
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
