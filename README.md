@@ -1,4 +1,4 @@
-# Orta Doğu Bülteni - Haber Sitesi
+# SON GÜN - Haber Sitesi
 
 Görsel Programlama Dersi için .NET 10 MVC ve Entity Framework Core kullanılarak geliştirilmiş dinamik haber sitesi.
 
@@ -29,7 +29,7 @@ Görsel Programlama Dersi için .NET 10 MVC ve Entity Framework Core kullanılar
 
 3. Uygulamayı başlatın:
    ```bash
-   dotnet run --project SaddamNews
+   dotnet run --project SonGun
    ```
 
 4. Tarayıcıda `http://localhost:5274` adresine gidin.

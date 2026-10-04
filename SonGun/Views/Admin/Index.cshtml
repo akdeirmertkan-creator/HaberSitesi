@@ -1,0 +1,66 @@
+@model IEnumerable<SonGun.Models.News>
+
+@{
+    ViewData["Title"] = "Panel - Haber Yönetimi";
+}
+
+<div class="d-flex justify-content-between align-items-center mb-4" data-aos="fade-down">
+    <h2 class="theme-heading fw-bold m-0"><i class="fas fa-tasks me-2"></i>Haber Yönetimi</h2>
+    <a asp-action="Create" class="btn btn-theme-primary">
+        <i class="fas fa-plus me-1"></i> Yeni Haber Ekle
+    </a>
+</div>
+
+<div class="card card-theme shadow-sm border-0 rounded-3 overflow-hidden" data-aos="zoom-in">
+    <div class="table-responsive">
+        <table class="table table-theme table-hover align-middle mb-0">
+            <thead>
+                <tr>
+                    <th style="width: 45%;">Başlık</th>
+                    <th>Yazar</th>
+                    <th>Tarih</th>
+                    <th class="text-end">İşlemler</th>
+                </tr>
+            </thead>
+            <tbody>
+                @if (Model.Any())
+                {
+                    foreach (var item in Model)
+                    {
+                        <tr>
+                            <td class="fw-semibold">@item.Title</td>
+                            <td>
+                                <span class="badge rounded-pill bg-secondary">
+                                    <i class="fas fa-user me-1"></i>@item.Author
+                                </span>
+                            </td>
+                            <td class="text-muted-custom">@item.CreatedAt.ToLocalTime().ToString("dd/MM/yyyy HH:mm")</td>
+                            <td class="text-end">
+                                <a asp-controller="Home" asp-action="Details" asp-route-id="@item.Id" class="btn btn-sm btn-outline-info me-1" title="Önizle">
+                                    <i class="fas fa-eye"></i>
+                                </a>
+                                <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-sm btn-warning me-1" title="Düzenle">
+                                    <i class="fas fa-edit"></i>
+                                </a>
+                                @if (User.IsInRole("Admin"))
+                                {
+                                    <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-sm btn-danger" title="Sil">
+                                        <i class="fas fa-trash-alt"></i>
+                                    </a>
+                                }
+                            </td>
+                        </tr>
+                    }
+                }
+                else
+                {
+                    <tr>
+                        <td colspan="4" class="text-center py-4 text-muted-custom">
+                            Kayıtlı haber bulunmuyor.
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
