@@ -6,7 +6,6 @@ Görsel Programlama Dersi için .NET 10 MVC ve Entity Framework Core kullanılar
 
 - **.NET 10 & ASP.NET Core MVC** mimarisi.
 - **SQLite & Entity Framework Core** ile veritabanı yönetimi ve başlangıçta otomatik migration (`Database.Migrate`).
-- **Özel Tema:** Askeri yeşil / haki renk paleti ve Saddam Hüseyin konsepti.
 - **Dinamik Dark / Light Mod:** Kullanıcının sistem/tarayıcı temasını otomatik algılar (`prefers-color-scheme`).
 - **AOS (Animate On Scroll):** Yüksek kaliteli kaydırma ve sayfa geçiş animasyonları.
 - **Kimlik Doğrulama & Yetkilendirme (Cookie Authentication):**
